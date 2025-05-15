@@ -1,16 +1,74 @@
 
 {
   "app": {
-    "title": "Multilingual App",
+    "title": "Multi-Language Dashboard",
     "header": "Hello World!",
     "description": "This app supports both RTL and LTR languages",
     "switchInstructions": "You can switch languages using the language switcher in the top right corner",
     "adaptiveUI": "The UI automatically adapts to language direction"
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "table": "Users",
+    "form": "Contact"
   },
   "features": {
     "rtlLayout": "RTL Layout Feature",
     "rtlDescription": "All layout elements automatically reverse when switching to an RTL language",
     "multilingualSupport": "Multilingual Support",
     "multilingualDescription": "You can easily add more languages by updating the language context"
+  },
+  "dashboard": {
+    "title": "Dashboard Overview",
+    "cards": {
+      "users": "Total Users",
+      "usersDescription": "Active users in the last 30 days",
+      "revenue": "Revenue",
+      "revenueDescription": "Total revenue this month",
+      "activity": "Activity",
+      "activityDescription": "Change from previous period"
+    }
+  },
+  "table": {
+    "title": "Users Table",
+    "search": "Search users...",
+    "caption": "A list of all users in the system",
+    "headers": {
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "status": "Status",
+      "role": "Role"
+    }
+  },
+  "form": {
+    "title": "Contact Form",
+    "contactForm": "Contact Us",
+    "contactDescription": "Fill out this form to send us a message",
+    "submit": "Submit",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message"
+    },
+    "descriptions": {
+      "name": "Your full name",
+      "email": "We'll never share your email",
+      "message": "Your feedback is important to us"
+    },
+    "placeholders": {
+      "name": "Enter your name",
+      "email": "Enter your email",
+      "message": "Type your message here"
+    },
+    "validation": {
+      "nameRequired": "Name must be at least 2 characters",
+      "emailInvalid": "Please enter a valid email address",
+      "messageLength": "Message must be at least 10 characters"
+    },
+    "toast": {
+      "success": "Success!",
+      "submitted": "Your message has been submitted"
+    }
   }
 }

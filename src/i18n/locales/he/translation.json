@@ -1,16 +1,74 @@
 
 {
   "app": {
-    "title": "אפליקציה רב-לשונית",
+    "title": "לוח מחוונים רב-לשוני",
     "header": "שלום עולם!",
     "description": "אפליקציה זו תומכת בשפות RTL ו-LTR",
     "switchInstructions": "אתה יכול להחליף שפות באמצעות מחליף השפה בפינה הימנית העליונה",
     "adaptiveUI": "הממשק משתנה אוטומטית לכיוון השפה"
+  },
+  "navigation": {
+    "dashboard": "לוח מחוונים",
+    "table": "משתמשים",
+    "form": "צור קשר"
   },
   "features": {
     "rtlLayout": "תכונת פריסת RTL",
     "rtlDescription": "כל רכיבי הפריסה מתהפכים אוטומטית בעת מעבר לשפת RTL",
     "multilingualSupport": "תמיכה רב-לשונית",
     "multilingualDescription": "אתה יכול להוסיף בקלות שפות נוספות על ידי עדכון הקשר שפה"
+  },
+  "dashboard": {
+    "title": "סקירת לוח המחוונים",
+    "cards": {
+      "users": "סך המשתמשים",
+      "usersDescription": "משתמשים פעילים ב-30 הימים האחרונים",
+      "revenue": "הכנסות",
+      "revenueDescription": "סך ההכנסות החודש",
+      "activity": "פעילות",
+      "activityDescription": "שינוי מהתקופה הקודמת"
+    }
+  },
+  "table": {
+    "title": "טבלת משתמשים",
+    "search": "חיפוש משתמשים...",
+    "caption": "רשימה של כל המשתמשים במערכת",
+    "headers": {
+      "id": "מזהה",
+      "name": "שם",
+      "email": "אימייל",
+      "status": "סטטוס",
+      "role": "תפקיד"
+    }
+  },
+  "form": {
+    "title": "טופס יצירת קשר",
+    "contactForm": "צור קשר",
+    "contactDescription": "מלא טופס זה כדי לשלוח לנו הודעה",
+    "submit": "שלח",
+    "fields": {
+      "name": "שם",
+      "email": "אימייל",
+      "message": "הודעה"
+    },
+    "descriptions": {
+      "name": "שמך המלא",
+      "email": "לעולם לא נשתף את האימייל שלך",
+      "message": "המשוב שלך חשוב לנו"
+    },
+    "placeholders": {
+      "name": "הכנס את שמך",
+      "email": "הכנס את האימייל שלך",
+      "message": "הקלד את ההודעה שלך כאן"
+    },
+    "validation": {
+      "nameRequired": "השם חייב להיות לפחות 2 תווים",
+      "emailInvalid": "אנא הכנס כתובת אימייל תקינה",
+      "messageLength": "ההודעה חייבת להיות לפחות 10 תווים"
+    },
+    "toast": {
+      "success": "הצלחה!",
+      "submitted": "ההודעה שלך נשלחה"
+    }
   }
 }
