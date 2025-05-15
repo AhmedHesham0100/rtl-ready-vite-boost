@@ -1,9 +1,11 @@
 
+import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Index = () => {
+  const { t } = useTranslation();
   const { currentLanguage } = useLanguage();
 
   return (
@@ -11,7 +13,7 @@ const Index = () => {
       <header className="fixed top-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur z-10 px-4 py-3 shadow">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className={`text-xl font-bold ${currentLanguage.dir === 'rtl' ? 'ml-auto' : 'mr-auto'}`}>
-            {currentLanguage.dir === 'rtl' ? 'تطبيق متعدد اللغات' : 'Multilingual App'}
+            {t('app.title')}
           </h1>
           <LanguageSwitcher />
         </div>
@@ -20,23 +22,17 @@ const Index = () => {
       <main className="container mx-auto pt-24 px-4 pb-16">
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle>{currentLanguage.dir === 'rtl' ? 'مرحبا بالعالم!' : 'Hello World!'}</CardTitle>
+            <CardTitle>{t('app.header')}</CardTitle>
             <CardDescription>
-              {currentLanguage.dir === 'rtl' 
-                ? 'هذا التطبيق يدعم اللغات من اليمين إلى اليسار (RTL) واللغات من اليسار إلى اليمين (LTR)' 
-                : 'This app supports both RTL and LTR languages'}
+              {t('app.description')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="mb-4">
-              {currentLanguage.dir === 'rtl'
-                ? 'يمكنك تبديل اللغة باستخدام محول اللغة في الزاوية العلوية اليمنى'
-                : 'You can switch languages using the language switcher in the top right corner'}
+              {t('app.switchInstructions')}
             </p>
             <p>
-              {currentLanguage.dir === 'rtl'
-                ? 'تتكيف واجهة المستخدم تلقائيًا مع اتجاه اللغة'
-                : 'The UI automatically adapts to language direction'}
+              {t('app.adaptiveUI')}
             </p>
           </CardContent>
         </Card>
@@ -45,14 +41,12 @@ const Index = () => {
           <Card>
             <CardHeader>
               <CardTitle>
-                {currentLanguage.dir === 'rtl' ? 'ميزة تخطيط RTL' : 'RTL Layout Feature'}
+                {t('features.rtlLayout')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p>
-                {currentLanguage.dir === 'rtl'
-                  ? 'يتم عكس جميع عناصر التخطيط تلقائيًا عند التبديل إلى لغة RTL'
-                  : 'All layout elements automatically reverse when switching to an RTL language'}
+                {t('features.rtlDescription')}
               </p>
             </CardContent>
           </Card>
@@ -60,14 +54,12 @@ const Index = () => {
           <Card>
             <CardHeader>
               <CardTitle>
-                {currentLanguage.dir === 'rtl' ? 'دعم متعدد اللغات' : 'Multilingual Support'}
+                {t('features.multilingualSupport')}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p>
-                {currentLanguage.dir === 'rtl'
-                  ? 'يمكنك إضافة المزيد من اللغات بسهولة عن طريق تحديث سياق اللغة'
-                  : 'You can easily add more languages by updating the language context'}
+                {t('features.multilingualDescription')}
               </p>
             </CardContent>
           </Card>

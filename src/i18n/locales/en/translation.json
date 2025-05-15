@@ -1,0 +1,16 @@
+
+{
+  "app": {
+    "title": "Multilingual App",
+    "header": "Hello World!",
+    "description": "This app supports both RTL and LTR languages",
+    "switchInstructions": "You can switch languages using the language switcher in the top right corner",
+    "adaptiveUI": "The UI automatically adapts to language direction"
+  },
+  "features": {
+    "rtlLayout": "RTL Layout Feature",
+    "rtlDescription": "All layout elements automatically reverse when switching to an RTL language",
+    "multilingualSupport": "Multilingual Support",
+    "multilingualDescription": "You can easily add more languages by updating the language context"
+  }
+}

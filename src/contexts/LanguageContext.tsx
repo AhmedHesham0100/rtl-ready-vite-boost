@@ -1,5 +1,7 @@
 
-import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import React, { createContext, useContext, ReactNode, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import '../i18n';
 
 type Language = {
   code: string;
@@ -36,16 +38,19 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider = ({ children }: LanguageProviderProps) => {
-  const [currentLanguage, setCurrentLanguage] = useState<Language>(() => {
-    const savedLanguage = localStorage.getItem('language');
-    return savedLanguage 
-      ? languages.find(lang => lang.code === savedLanguage) || defaultLanguage
-      : defaultLanguage;
-  });
+  const { i18n } = useTranslation();
+  
+  // Get current language from i18next
+  const getCurrentLanguageFromI18n = (): Language => {
+    const code = i18n.language || 'en';
+    return languages.find(lang => lang.code === code) || defaultLanguage;
+  };
+  
+  const currentLanguage = getCurrentLanguageFromI18n();
 
   const setLanguage = (code: string) => {
     const newLanguage = languages.find(lang => lang.code === code) || defaultLanguage;
-    setCurrentLanguage(newLanguage);
+    i18n.changeLanguage(code); // Change i18next language
     localStorage.setItem('language', newLanguage.code);
     document.documentElement.dir = newLanguage.dir;
     document.documentElement.lang = newLanguage.code;
