@@ -1,5 +1,6 @@
 
 import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { 
   Table,
   TableBody,
@@ -15,6 +16,8 @@ import { useState } from "react";
 
 const TablePage = () => {
   const { t } = useTranslation();
+  const { currentLanguage } = useLanguage();
+  const isRTL = currentLanguage.dir === 'rtl';
   const [searchTerm, setSearchTerm] = useState("");
 
   // Sample data
@@ -36,7 +39,7 @@ const TablePage = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className={`flex ${isRTL ? 'flex-row-reverse' : ''} justify-between items-center`}>
         <h1 className="text-2xl font-bold">{t('table.title')}</h1>
         <Input
           className="max-w-sm"
@@ -51,21 +54,21 @@ const TablePage = () => {
           <TableCaption>{t('table.caption')}</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead>{t('table.headers.id')}</TableHead>
-              <TableHead>{t('table.headers.name')}</TableHead>
-              <TableHead>{t('table.headers.email')}</TableHead>
-              <TableHead>{t('table.headers.status')}</TableHead>
-              <TableHead>{t('table.headers.role')}</TableHead>
+              <TableHead className={isRTL ? "text-right" : "text-left"}>{t('table.headers.id')}</TableHead>
+              <TableHead className={isRTL ? "text-right" : "text-left"}>{t('table.headers.name')}</TableHead>
+              <TableHead className={isRTL ? "text-right" : "text-left"}>{t('table.headers.email')}</TableHead>
+              <TableHead className={isRTL ? "text-right" : "text-left"}>{t('table.headers.status')}</TableHead>
+              <TableHead className={isRTL ? "text-right" : "text-left"}>{t('table.headers.role')}</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredData.map((item) => (
               <TableRow key={item.id}>
-                <TableCell>{item.id}</TableCell>
-                <TableCell>{item.name}</TableCell>
-                <TableCell>{item.email}</TableCell>
-                <TableCell>{item.status}</TableCell>
-                <TableCell>{item.role}</TableCell>
+                <TableCell className={isRTL ? "text-right" : ""}>{item.id}</TableCell>
+                <TableCell className={isRTL ? "text-right" : ""}>{item.name}</TableCell>
+                <TableCell className={isRTL ? "text-right" : ""}>{item.email}</TableCell>
+                <TableCell className={isRTL ? "text-right" : ""}>{item.status}</TableCell>
+                <TableCell className={isRTL ? "text-right" : ""}>{item.role}</TableCell>
               </TableRow>
             ))}
           </TableBody>

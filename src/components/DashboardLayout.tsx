@@ -9,6 +9,7 @@ const DashboardLayout = () => {
   const { t } = useTranslation();
   const { currentLanguage } = useLanguage();
   const location = useLocation();
+  const isRTL = currentLanguage.dir === 'rtl';
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -21,7 +22,7 @@ const DashboardLayout = () => {
   return (
     <div className="flex h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
       {/* Sidebar */}
-      <div className={`hidden md:flex flex-col w-64 bg-white/90 dark:bg-gray-950/90 shadow-lg ${currentLanguage.dir === 'rtl' ? 'border-r' : 'border-l'} border-gray-200 dark:border-gray-800`}>
+      <div className={`hidden md:flex flex-col w-64 bg-white/90 dark:bg-gray-950/90 shadow-lg ${isRTL ? 'border-l' : 'border-r'} border-gray-200 dark:border-gray-800`}>
         <div className="p-4 border-b border-gray-200 dark:border-gray-800">
           <h1 className="text-xl font-bold">{t('app.title')}</h1>
         </div>
@@ -31,7 +32,7 @@ const DashboardLayout = () => {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`flex items-center gap-2 p-2 rounded-md transition-colors ${
+                  className={`flex items-center ${isRTL ? 'flex-row-reverse text-right' : 'text-left'} gap-2 p-2 rounded-md transition-colors ${
                     isActive(item.path)
                       ? 'bg-gray-100 dark:bg-gray-800 text-primary'
                       : 'hover:bg-gray-100 dark:hover:bg-gray-800'
@@ -56,7 +57,7 @@ const DashboardLayout = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <div className={`${currentLanguage.dir === 'rtl' ? 'mr-auto' : 'ml-auto'}`}>
+            <div className={isRTL ? 'mr-auto' : 'ml-auto'}>
               <LanguageSwitcher />
             </div>
           </div>

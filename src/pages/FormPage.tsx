@@ -1,5 +1,6 @@
 
 import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -20,6 +21,8 @@ import { toast } from "@/hooks/use-toast";
 
 const FormPage = () => {
   const { t } = useTranslation();
+  const { currentLanguage } = useLanguage();
+  const isRTL = currentLanguage.dir === 'rtl';
 
   // Define form schema with Zod
   const formSchema = z.object({
@@ -50,12 +53,12 @@ const FormPage = () => {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">{t('form.title')}</h1>
+      <h1 className={`text-2xl font-bold ${isRTL ? "text-right" : "text-left"}`}>{t('form.title')}</h1>
 
       <Card className="max-w-2xl mx-auto">
         <CardHeader>
-          <CardTitle>{t('form.contactForm')}</CardTitle>
-          <CardDescription>{t('form.contactDescription')}</CardDescription>
+          <CardTitle className={isRTL ? "text-right" : "text-left"}>{t('form.contactForm')}</CardTitle>
+          <CardDescription className={isRTL ? "text-right" : "text-left"}>{t('form.contactDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -64,7 +67,7 @@ const FormPage = () => {
                 control={form.control}
                 name="name"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className={isRTL ? "text-right" : "text-left"}>
                     <FormLabel>{t('form.fields.name')}</FormLabel>
                     <FormControl>
                       <Input placeholder={t('form.placeholders.name')} {...field} />
@@ -78,7 +81,7 @@ const FormPage = () => {
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className={isRTL ? "text-right" : "text-left"}>
                     <FormLabel>{t('form.fields.email')}</FormLabel>
                     <FormControl>
                       <Input type="email" placeholder={t('form.placeholders.email')} {...field} />
@@ -92,7 +95,7 @@ const FormPage = () => {
                 control={form.control}
                 name="message"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className={isRTL ? "text-right" : "text-left"}>
                     <FormLabel>{t('form.fields.message')}</FormLabel>
                     <FormControl>
                       <Textarea placeholder={t('form.placeholders.message')} {...field} />
@@ -102,7 +105,9 @@ const FormPage = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit">{t('form.submit')}</Button>
+              <div className={`${isRTL ? "text-right" : "text-left"}`}>
+                <Button type="submit">{t('form.submit')}</Button>
+              </div>
             </form>
           </Form>
         </CardContent>
